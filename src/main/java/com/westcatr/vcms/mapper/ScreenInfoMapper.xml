@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.westcatr.vcms.mapper.ScreenInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.westcatr.vcms.entity.ScreenInfo">
+        <id column="id" property="id" />
+        <result column="system_type" property="systemType" />
+        <result column="system_version" property="systemVersion" />
+        <result column="device_id" property="deviceId" />
+        <result column="device_name" property="deviceName" />
+        <result column="screen_width" property="screenWidth" />
+        <result column="screen_height" property="screenHeight" />
+        <result column="ext" property="ext" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <update id="updateResource">
+        UPDATE vc_screen_info SET resource_id=null,resource_name=null,resource_type=null WHERE id=#{id}
+    </update>
+</mapper>

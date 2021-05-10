@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.westcatr.vcms.mapper.AreaMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.westcatr.vcms.param.AreaVo">
+        <id column="id" property="id" />
+        <result column="area_name" property="areaName" />
+        <result column="sort" property="sort" />
+        <result column="pid" property="pid" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <association property="parent" column="parent_id" javaType="com.westcatr.vcms.param.AreaVo" select="queryForParent">
+        </association>
+        <collection property="children" ofType="com.westcatr.vcms.paramMenu.AreaVo" column="id" select="queryByPid"></collection>
+    </resultMap>
+
+    <resultMap id="parentMap" type="com.westcatr.vcms.param.AreaVo">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <select id="queryForMenu" resultMap="BaseResultMap">
+        select * from vc_area where pid is null
+    </select>
+
+    <select id="queryByPid" resultMap="BaseResultMap">
+        select * from vc_area where pid = #{pid}
+    </select>
+
+    <select id="queryForParent" resultMap="parentMap">
+        select * from vc_area where id = #{id}
+    </select>
+
+</mapper>

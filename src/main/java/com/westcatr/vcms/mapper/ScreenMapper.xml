@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.westcatr.vcms.mapper.ScreenMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.westcatr.vcms.entity.Screen">
+        <id column="id" property="id" />
+        <result column="screen_name" property="screenName" />
+        <result column="resource_type" property="resourceType" />
+        <result column="resource_name" property="resourceName" />
+        <result column="resource_id" property="resourceId" />
+        <result column="status" property="status" />
+        <result column="remark" property="remark" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+</mapper>
